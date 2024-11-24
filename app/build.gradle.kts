@@ -67,4 +67,9 @@ dependencies {
 
     implementation(libs.play.services.mlkit.barcode.scanning)
     implementation(libs.androidx.camera.mlkit.vision)
+
+    implementation(libs.circleimageview)
+    implementation(libs.androidx.coordinatorlayout)
+    implementation(libs.glide)
+
 }

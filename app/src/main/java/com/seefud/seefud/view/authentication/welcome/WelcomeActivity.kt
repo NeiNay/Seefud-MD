@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -16,7 +15,6 @@ import com.seefud.seefud.view.MainActivity
 import com.seefud.seefud.view.authentication.AuthViewModelFactory
 import com.seefud.seefud.view.authentication.login.LoginActivity
 import com.seefud.seefud.view.authentication.signup.SignupActivity
-import com.seefud.seefud.view.content.home.HomeFragment
 
 class WelcomeActivity : AppCompatActivity() {
     private val viewModel by viewModels<WelcomeViewModel> {
