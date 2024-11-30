@@ -23,7 +23,6 @@
     <string name="email_error">Format email salah</string>
     <string name="ad_title">Yeah!</string>
     <string name="ad_button">Lanjut</string>
-    <string name="title_activity_detail">DetailActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -122,4 +121,14 @@
     <string name="deskripsi_txt">deskripsiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</string>
     <string name="lapor_txt">Bantu SeeFood lebih baik\nAda yang engga pas?</string>
     <string name="nama_makanan_txt">Food Name</string>
+    <string name="profile_menuTitle_myAccount">My Account</string>
+    <string name="profile_menuDesc_myAccount">Make changes to your account</string>
+    <string name="profile_menuTitle_logout">Log out</string>
+    <string name="profile_menuTitle_deleteAccount">Delete Account</string>
+    <string name="profile_menuDesc_deleteAccount">Goodbye? :(</string>
+    <string name="search_txt">Search</string>
+    <string name="halalSection_title">Bersertifikat Halal MUI</string>
+    <string name="mitraSection_title">Mitra Amati</string>
+    <string name="contentDesc_notif">Go to Notification Page</string>
+    <string name="contentDesc_profile">Go to Profile Page</string>
 </resources>

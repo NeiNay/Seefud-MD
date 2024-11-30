@@ -2,7 +2,6 @@ package com.seefud.seefud.view.content.dashboard
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,18 +18,20 @@ import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.LifecycleCameraController
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.seefud.seefud.databinding.FragmentDashboardBinding
-
+import com.seefud.seefud.view.content.detail.DetailActivity
 
 class DashboardFragment : Fragment() {
 
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var binding: FragmentDashboardBinding
     private var firstCall = true
+    private lateinit var viewModel: DashboardViewModel
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -53,6 +54,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
         return binding.root
     }
 
@@ -96,28 +98,30 @@ class DashboardFragment : Fragment() {
                 firstCall = false
                 val barcode = barcodeResults[0]
                 showAlertDialog(barcode)
+            } else {
+                showRetryDialog("Barcode not found. Silahkan coba lagi")
             }
         }
     }
 
     private fun showAlertDialog(barcode: Barcode) {
+        if (barcode.rawValue != null) {
+            val intent = Intent(requireContext(), DetailActivity::class.java)
+            intent.putExtra("scannedId", barcode.rawValue)
+            startActivity(intent)
+        } else {
+            showRetryDialog("Barcode not found. Silahkan coba lagi")
+        }
+    }
+
+    private fun showRetryDialog(message: String) {
         val alertDialog = AlertDialog.Builder(requireContext())
-            .setMessage(barcode.rawValue)
-            .setPositiveButton("Buka") { _, _ ->
+            .setMessage("No barcode found")
+            .setPositiveButton("Scan lagi") { _, _ ->
                 firstCall = true
-                when (barcode.valueType) {
-                    Barcode.TYPE_URL -> {
-                        val openBrowserIntent = Intent(Intent.ACTION_VIEW)
-                        openBrowserIntent.data = Uri.parse(barcode.url?.url)
-                        startActivity(openBrowserIntent)
-                    }
-                    else -> {
-                        Toast.makeText(requireContext(), "Unsupported data type", Toast.LENGTH_SHORT).show()
-                        startCamera()
-                    }
-                }
+                startCamera()
             }
-            .setNegativeButton("Scan lagi") { _, _ -> firstCall = true }
+            .setNegativeButton("Batal") { _, _ -> firstCall = true }
             .setCancelable(false)
             .create()
         alertDialog.show()

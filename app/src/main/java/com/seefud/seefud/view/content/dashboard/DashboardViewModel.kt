@@ -5,9 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class DashboardViewModel : ViewModel() {
+    private val _scannedId = MutableLiveData<String>()
+    val scannedId: LiveData<String> = _scannedId
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    fun setScannedId(id: String) {
+        _scannedId.value = id
     }
-    val text: LiveData<String> = _text
 }
