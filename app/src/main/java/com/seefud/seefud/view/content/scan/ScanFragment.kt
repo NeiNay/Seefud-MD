@@ -1,4 +1,4 @@
-package com.seefud.seefud.view.content.dashboard
+package com.seefud.seefud.view.content.scan
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -23,15 +23,15 @@ import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
-import com.seefud.seefud.databinding.FragmentDashboardBinding
+import com.seefud.seefud.databinding.FragmentScanBinding
 import com.seefud.seefud.view.content.detail.DetailActivity
 
-class DashboardFragment : Fragment() {
+class ScanFragment : Fragment() {
 
     private lateinit var barcodeScanner: BarcodeScanner
-    private lateinit var binding: FragmentDashboardBinding
+    private lateinit var binding: FragmentScanBinding
     private var firstCall = true
-    private lateinit var viewModel: DashboardViewModel
+    private lateinit var viewModel: ScanViewModel
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -53,8 +53,8 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
+        binding = FragmentScanBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[ScanViewModel::class.java]
         return binding.root
     }
 

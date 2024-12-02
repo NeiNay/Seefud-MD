@@ -28,26 +28,6 @@
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageBell"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/bell"
-            android:clickable="true"
-            android:focusable="true"
-            android:contentDescription="@string/contentDesc_notif" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageProfile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/baseline_account_circle_24"
-            android:clickable="true"
-            android:focusable="true"
-            android:contentDescription="@string/contentDesc_profile" />
     </LinearLayout>
 
     <!-- Search Bar -->

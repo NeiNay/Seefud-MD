@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Seefud</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_profile">Profile</string>
 
     <string name="signup">Daftar</string>
     <string name="login">Masuk</string>

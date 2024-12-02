@@ -1,10 +1,10 @@
-package com.seefud.seefud.view.content.dashboard
+package com.seefud.seefud.view.content.scan
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class ScanViewModel : ViewModel() {
     private val _scannedId = MutableLiveData<String>()
     val scannedId: LiveData<String> = _scannedId
 
