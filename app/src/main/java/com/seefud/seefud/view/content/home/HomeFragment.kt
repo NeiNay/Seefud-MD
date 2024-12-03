@@ -32,15 +32,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Observe session data
-//        homeViewModel.getSession().observe(viewLifecycleOwner) { user ->
-//            if (!user.isLogin) {
-//                startActivity(Intent(requireContext(), WelcomeActivity::class.java))
-//                requireActivity().finish()
-//            }
-//        }
-
         setupSearch()
         setupRecyclerView()
     }
