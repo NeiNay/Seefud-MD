@@ -1,5 +1,6 @@
 package com.seefud.seefud.view.content.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.seefud.seefud.R
 import com.seefud.seefud.databinding.FragmentProfileBinding
+import com.seefud.seefud.view.authentication.welcome.WelcomeActivity
 import com.seefud.seefud.view.content.ViewModelFactory
 
 class ProfileFragment : Fragment() {
@@ -23,21 +27,48 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        setupListeners()
+        observeViewModel()
+        setupAction()
         return root
     }
 
-    private fun setupListeners() {
+    private fun observeViewModel() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (user.isLogin) {
+                binding.userName.text = user.name
+                binding.userHandle.text = user.email
+                binding.loginSection.visibility = View.GONE
+            } else {
+                binding.userName.text = getString(R.string.you_haven_t_logged_in_yet)
+                binding.userHandle.text = getString(R.string.please_log_in_to_continue)
+                binding.myAccSection.visibility = View.GONE
+                binding.logoutSection.visibility = View.GONE
+                binding.deleteSection.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun setupAction() {
+        // MyAccount Section
+        binding.myAccSection.setOnClickListener {
+            //startActivity(Intent(requireContext(), FormFragment::class.java))
+            Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()
+        }
+
+        // Login Section
+        binding.loginSection.setOnClickListener {
+            startActivity(Intent(requireContext(), WelcomeActivity::class.java))
+        }
+
         // Logout Section
         binding.logoutSection.setOnClickListener {
             viewModel.logout()
-            Toast.makeText(context, "Logging out...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "You've logged out", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_navigation_profile_to_navigation_home)
         }
 
         // Delete Account Section
         binding.deleteSection.setOnClickListener {
-            // Confirm deletion
             AlertDialog.Builder(requireContext()).setTitle("Delete Account")
                 .setMessage("Are you sure you want to delete your account?")
                 .setPositiveButton("Yes") { _, _ ->

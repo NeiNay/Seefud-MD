@@ -7,7 +7,7 @@ import com.seefud.seefud.data.pref.UserModel
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
-    suspend fun login(email: String, pass: String) = userRepository.login(email, pass)
+    fun login(email: String, pass: String) = userRepository.login(email, pass)
 
     fun saveSession(user: UserModel) {
         viewModelScope.launch {

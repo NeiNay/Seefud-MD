@@ -2,45 +2,40 @@ package com.seefud.seefud.view.authentication
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.content.ContextCompat
+import com.google.android.material.textfield.TextInputLayout
 import com.seefud.seefud.R
 
 class MyEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : AppCompatEditText(context, attrs), View.OnTouchListener  {
-    private var iconImage: Drawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_error_24) as Drawable
+) : AppCompatEditText(context, attrs) {
 
     init {
-        iconImage
-        setOnTouchListener(this)
-
         addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 val fieldType = tag?.toString() ?: "other"
-
-                error = when {
+                val errorMessage: String? = when {
                     s.toString().isEmpty() -> when (fieldType) {
-                        "email", "password", "other" -> "Kolom tidak boleh kosong"
+                        "email", "password", "other" -> context.getString(R.string.err_column)
                         else -> null
                     }
 
-                    fieldType == "email" && !isValidEmail(s.toString()) -> context.getString(R.string.email_error)
-                    fieldType == "password" && s.toString().length < 8 -> context.getString(R.string.password_error)
+                    fieldType == "email" && !isValidEmail(s.toString()) -> context.getString(R.string.err_email)
+                    fieldType == "password" && s.toString().length < 8 -> context.getString(R.string.err_pass)
                     else -> null
                 }
-                setError(error, null)
+
+                val parentLayout = parent.parent as? TextInputLayout
+                parentLayout?.error = errorMessage
             }
-            override fun afterTextChanged(s: Editable) {
-            }
+
+            override fun afterTextChanged(s: Editable) {}
         })
     }
 
@@ -51,9 +46,5 @@ class MyEditText @JvmOverloads constructor(
 
     private fun isValidEmail(email: CharSequence): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    override fun onTouch(v: View?, event: MotionEvent): Boolean {
-        return false
     }
 }

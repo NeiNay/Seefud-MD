@@ -17,6 +17,12 @@
     <string name="message_main_page">Selamat Belajar di Dicoding.</string>
     <string name="greeting">Halo %1$s,</string>
     <string name="logout">Keluar</string>
+    <string name="err_column">Kolom tidak boleh kosong</string>
+    <string name="err_email">Email tidak valid</string>
+    <string name="err_pass">Password tidak boleh kurang dari 8 karakter</string>
+    <string name="retry">Coba Lagi</string>
+    <string name="success_register_msg">Akun berhasil dibuat. Yuk, ke login. Tunggu.. </string>
+
 
     <string name="button_error">Lengkapi data terlebih dahulu</string>
     <string name="password_error">Masukkan minimal 8 karakter</string>
@@ -131,4 +137,8 @@
     <string name="mitraSection_title">Mitra Amati</string>
     <string name="contentDesc_notif">Go to Notification Page</string>
     <string name="contentDesc_profile">Go to Profile Page</string>
+    <string name="profile_menuTitle_login">Log In</string>
+    <string name="title_welcome">Welcome</string>
+    <string name="you_haven_t_logged_in_yet">You haven\'t logged in yet</string>
+    <string name="please_log_in_to_continue">Please log in to continue</string>
 </resources>
