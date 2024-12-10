@@ -19,9 +19,6 @@
         android:theme="@style/Theme.Seefud"
         tools:targetApi="31">
         <activity
-            android:name=".view.content.profile.verification.MyAccount"
-            android:exported="false" />
-        <activity
             android:name=".view.content.detail.DetailActivity"
             android:exported="false" />
         <activity
