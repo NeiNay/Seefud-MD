@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.content.dashboard.ReportActivity">
+
+    <!-- Header Section with Background Image -->
+    <FrameLayout
+        android:id="@+id/header_section"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Gambar Latar Belakang -->
+        <ImageView
+            android:id="@+id/header_background_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample_image"
+        android:contentDescription="Background Image" />
+
+        <!-- Konten Header (Avatar, Nama Resto, Verifikasi) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_baseline_person_24"
+                android:contentDescription="Profile Picture"
+                android:background="@drawable/circle_backround"
+                android:padding="4dp"
+                android:elevation="4dp" />
+
+            <TextView
+                android:id="@+id/restaurant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Resto"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/verified_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_verified"
+            android:contentDescription="Verified Icon"
+            android:tint="@color/green"
+            android:layout_marginTop="4dp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Konten Utama di Bawah Header -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header_section"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/report_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Halaman Laporan"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@android:color/black" />
+
+            <!-- Jenis Masalah -->
+            <TextView
+                android:id="@+id/problem_type_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jenis Masalah"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/problem_type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_shape"
+                android:padding="12dp"
+                android:entries="@array/jenis_masalah" /> <!-- Pastikan Anda memiliki array di strings.xml -->
+
+            <!-- Jelaskan Masalah -->
+            <TextView
+                android:id="@+id/problem_description_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jelaskan masalah yang ditemui"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/problem_description_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Input"
+                android:gravity="top"
+                android:padding="12dp"
+                android:background="@drawable/rounded_shape"
+                android:inputType="textMultiLine" />
+
+            <!-- Tambahkan Bukti -->
+            <TextView
+                android:id="@+id/add_evidence_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tambahkan Bukti"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/evidence_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bisa berupa ScreenShot atau Foto"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:id="@+id/evidence_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_shape"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/choose_file_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Choose File"
+                    android:background="@drawable/rounded_input_photo"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/file_chosen_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No File Chosen"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="8dp"
+                    android:padding="12dp" />
+            </LinearLayout>
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:id="@+id/action_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="1dp">
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Batalkan"
+                    android:backgroundTint="@color/teal_200"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/submit_report_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Kirim Laporan"
+                    android:backgroundTint="@color/red"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
