@@ -133,7 +133,7 @@
     <string name="contentDesc_profile">Go to Profile Page</string>
     <string name="profile_menuTitle_login">Log In</string>
     <string name="title_welcome">Welcome</string>
-    <string name="you_haven_t_logged_in_yet">Kamu mitra? Ayo masuk dengan akun Seefud!</string>
+    <string name="you_haven_t_logged_in_yet">Kamu mitra?\nAyo masuk dengan akun Seefud!</string>
     <string name="visitor_number">100</string>
     <string name="title_verified_profile">Verified</string>
     <string name="dashboard_title">Total Scan Pelanggan</string>
@@ -145,4 +145,12 @@
     <string name="save_profile">Simpan Perubahan</string>
     <string name="save_profile_txt">Sudah selesai mengubah?</string>
     <string name="edit_profile">Ubah Profil</string>
+    <string name="no_data_msg">Belum ada UMKM yang terdaftar :(</string>
+    <string name="nama_masakan">Nama Masakan</string>
+    <string name="gambar_masakan">Gambar Masakan</string>
+    <string name="upload_gambar_btn">Upload Gambar</string>
+    <string name="bahan">Bahan</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="simpan_masakan_btn">Simpan</string>
+    <string name="login_as_guest">Masuk sebagai Tamu</string>
 </resources>

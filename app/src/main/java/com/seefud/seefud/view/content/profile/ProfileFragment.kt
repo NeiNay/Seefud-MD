@@ -38,11 +38,17 @@ class ProfileFragment : Fragment() {
                 binding.userName.text = user.name
                 binding.loginSection.visibility = View.GONE
             } else {
-                binding.userName.text = getString(R.string.you_haven_t_logged_in_yet)
-                binding.myAccSection.visibility = View.GONE
-                binding.logoutSection.visibility = View.GONE
-                binding.deleteSection.visibility = View.GONE
-                binding.addDataSection.visibility = View.GONE
+                with(binding) {
+                    userName.text = getString(R.string.you_haven_t_logged_in_yet)
+                    myAccSection.visibility = View.GONE
+                    logoutSection.visibility = View.GONE
+                    deleteSection.visibility = View.GONE
+                    addDataSection.visibility = View.GONE
+                    profileImage.visibility = View.GONE
+                    txtVerified.visibility = View.GONE
+                    dashboardSection.visibility = View.GONE
+                }
+
             }
         }
     }

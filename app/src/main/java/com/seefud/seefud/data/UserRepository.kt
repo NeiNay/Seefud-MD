@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.seefud.seefud.data.api.ApiService
 import com.seefud.seefud.data.pref.UserModel
 import com.seefud.seefud.data.pref.UserPreference
+import com.seefud.seefud.data.pref.Vendor
 import com.seefud.seefud.data.response.LoginResult
 import com.seefud.seefud.data.response.RegisterResponse
 import kotlinx.coroutines.flow.Flow
@@ -43,11 +44,10 @@ class UserRepository private constructor(
     fun login(email: String, password: String): LiveData<Result<LoginResult>> = liveData  {
         emit(Result.Loading)
         try {
-            val result = apiService.login(email, password).loginResult
-            val name = result?.name
+            val result = apiService.login(email, password).data
             val id = result?.userId
             val token = result?.token
-            emit(Result.Success(LoginResult(name, id, token)))
+            emit(Result.Success(LoginResult(id, token)))
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
             val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
@@ -55,6 +55,19 @@ class UserRepository private constructor(
             emit(Result.Error(errorMessage!!))
         }
     }
+
+    suspend fun getVendors(): List<Vendor> {
+        val response = apiService.getVendors()
+        return response.data.map { vendor ->
+            Vendor(
+                id = vendor.id.toString(),
+                name = vendor.store_name,
+                description = vendor.description,
+                location = vendor.location
+            )
+        }
+    }
+
 
     companion object {
         @Volatile

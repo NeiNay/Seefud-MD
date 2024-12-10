@@ -13,7 +13,6 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun updateUserProfile(name: String, email: String) {
         viewModelScope.launch {
-            // Update user info in repository (database, API, etc.)
 //            repository.updateUserProfile(name, email)
         }
     }

@@ -60,6 +60,10 @@ class WelcomeActivity : AppCompatActivity() {
         binding.signupButton.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
+
+        binding.loginAsGuestText.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     private fun playAnimation() {
