@@ -122,7 +122,7 @@
     <string name="lapor_txt">Bantu SeeFood lebih baik\nAda yang engga pas?</string>
     <string name="nama_makanan_txt">Food Name</string>
     <string name="profile_menuTitle_myAccount">My Account</string>
-    <string name="profile_menuDesc_myAccount">Make changes to your account</string>
+    <string name="profile_menuDesc_myAccount">Ubah detail profil</string>
     <string name="profile_menuTitle_logout">Log out</string>
     <string name="profile_menuTitle_deleteAccount">Delete Account</string>
     <string name="profile_menuDesc_deleteAccount">Goodbye? :(</string>
@@ -133,6 +133,16 @@
     <string name="contentDesc_profile">Go to Profile Page</string>
     <string name="profile_menuTitle_login">Log In</string>
     <string name="title_welcome">Welcome</string>
-    <string name="you_haven_t_logged_in_yet">You haven\'t logged in yet</string>
-    <string name="please_log_in_to_continue">Please log in to continue</string>
+    <string name="you_haven_t_logged_in_yet">Kamu mitra? Ayo masuk dengan akun Seefud!</string>
+    <string name="visitor_number">100</string>
+    <string name="title_verified_profile">Verified</string>
+    <string name="dashboard_title">Total Scan Pelanggan</string>
+    <string name="profile_menutitle_addacc">Add Data</string>
+    <string name="profile_menuDesc_addacc">Tambahkan daftar makanan dan minuman</string>
+    <string name="profile_title_page">Profile</string>
+    <string name="edit_profile_txt">Ada yang kurang tepat?</string>
+    <string name="email_hint">yourvendorname123@example.com</string>
+    <string name="save_profile">Simpan Perubahan</string>
+    <string name="save_profile_txt">Sudah selesai mengubah?</string>
+    <string name="edit_profile">Ubah Profil</string>
 </resources>

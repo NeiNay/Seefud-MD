@@ -25,6 +25,13 @@
         <action
             android:id="@+id/action_navigation_profile_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_profile_to_myAccountFragment"
+            app:destination="@id/myAccountFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/myAccountFragment"
+        android:name="com.seefud.seefud.view.content.profile.MyAccountFragment"
+        android:label="MyAccountFragment" />
 
 </navigation>

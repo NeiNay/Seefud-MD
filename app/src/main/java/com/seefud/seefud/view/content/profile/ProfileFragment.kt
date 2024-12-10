@@ -36,14 +36,13 @@ class ProfileFragment : Fragment() {
         viewModel.getSession().observe(viewLifecycleOwner) { user ->
             if (user.isLogin) {
                 binding.userName.text = user.name
-                binding.userHandle.text = user.email
                 binding.loginSection.visibility = View.GONE
             } else {
                 binding.userName.text = getString(R.string.you_haven_t_logged_in_yet)
-                binding.userHandle.text = getString(R.string.please_log_in_to_continue)
                 binding.myAccSection.visibility = View.GONE
                 binding.logoutSection.visibility = View.GONE
                 binding.deleteSection.visibility = View.GONE
+                binding.addDataSection.visibility = View.GONE
             }
         }
     }
@@ -51,13 +50,17 @@ class ProfileFragment : Fragment() {
     private fun setupAction() {
         // MyAccount Section
         binding.myAccSection.setOnClickListener {
-            //startActivity(Intent(requireContext(), FormFragment::class.java))
-            Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_navigation_profile_to_myAccountFragment)
         }
 
         // Login Section
         binding.loginSection.setOnClickListener {
             startActivity(Intent(requireContext(), WelcomeActivity::class.java))
+        }
+
+        // Add item Section
+        binding.addDataSection.setOnClickListener {
+            Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
         // Logout Section
@@ -73,7 +76,7 @@ class ProfileFragment : Fragment() {
                 .setMessage("Are you sure you want to delete your account?")
                 .setPositiveButton("Yes") { _, _ ->
                     //viewModel.deleteAccount()
-                    Toast.makeText(context, "Account deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "simulating delete Account", Toast.LENGTH_SHORT).show()
                 }.setNegativeButton("Cancel", null).show()
         }
     }

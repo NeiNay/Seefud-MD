@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="32dp"
     tools:context=".view.content.profile.ProfileFragment">
 
     <LinearLayout
@@ -18,30 +17,83 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/profile_name_bg_shape"
-            android:elevation="4dp"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/profile_menu_bg_shape"
+            android:elevation="1dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-            <TextView
-                android:id="@+id/userName"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_baseline_person_24"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:paddingBottom="4dp"
-                android:text="@string/nama_resto_title"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/nama_resto_title"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_menu_bg_shape"
+                        android:backgroundTint="@color/green"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/title_verified_profile"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Dashboard -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/profile_menu_bg_shape"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp">
 
             <TextView
-                android:id="@+id/userHandle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="@string/email"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:text="@string/dashboard_title"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Account Options -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/visitor_number"
+                android:textColor="@color/red"
+                android:textSize="32sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Options Menu -->
@@ -99,6 +151,54 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_baseline_error_24"
                     tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/light_gray"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
+
+            <!-- Add Data -->
+            <LinearLayout
+                android:id="@+id/addDataSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_add_data"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/profile_menutitle_addacc"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/profile_menuDesc_addacc"
+                        android:textColor="@color/light_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="20dp"
@@ -193,12 +293,6 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_baseline_error_24"
-                    tools:ignore="ContentDescription" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_right"
                     app:tint="@color/light_gray"
                     tools:ignore="ContentDescription" />
@@ -245,12 +339,6 @@
                         android:textColor="@color/light_gray"
                         android:textSize="14sp" />
                 </LinearLayout>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_baseline_error_24"
-                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="20dp"

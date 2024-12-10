@@ -11,6 +11,13 @@ import kotlinx.coroutines.launch
 class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
     fun getSession(): LiveData<UserModel> = repository.getSession().asLiveData()
 
+    fun updateUserProfile(name: String, email: String) {
+        viewModelScope.launch {
+            // Update user info in repository (database, API, etc.)
+//            repository.updateUserProfile(name, email)
+        }
+    }
+
     fun logout() {
         viewModelScope.launch {
             repository.logout()
