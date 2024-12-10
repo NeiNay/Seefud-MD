@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9F2E1"
+    android:padding="16dp"
+    tools:context=".view.authentication.profil.MyAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Back Button -->
+
+        <!-- Profile Information -->
+
+        <ImageButton
+            android:id="@+id/btnToProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Navigate to profile"
+            android:src="@drawable/baseline_chevron_left_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Name Input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Itunuoluwa Abidoye"
+            android:background="@drawable/rounded_shape"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Email Input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Itunuoluwa@petra.africa"
+            android:background="@drawable/rounded_shape"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textEmailAddress" />
+
+        <!-- Password Input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="********"
+            android:background="@drawable/rounded_shape"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textPassword" />
+
+        <!-- Something feels off Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Something feels off?"
+            android:textSize="14sp"
+            android:textColor="#8A8A8A"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Edit Profile Button -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:background="@drawable/rounded_shape_green"
+            android:textColor="#FFF"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
