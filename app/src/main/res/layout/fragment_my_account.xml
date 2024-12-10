@@ -28,11 +28,14 @@
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/profile_menu_bg_shape"
         android:enabled="false"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
         android:padding="12dp"
+        android:importantForAccessibility="no"
         android:textSize="16sp" />
 
     <!-- Email Input -->
@@ -48,10 +51,11 @@
         android:id="@+id/emailEditText"
         android:enabled="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/profile_menu_bg_shape"
         android:hint="@string/email_hint"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         android:textSize="16sp" />
@@ -80,7 +84,6 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/dark_green"
             android:padding="16dp"
-            android:text="Edit Profile"
-            android:textColor="#FFF" />
+            android:text="@string/edit_profile" />
     </LinearLayout>
 </LinearLayout>
