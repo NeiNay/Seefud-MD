@@ -78,7 +78,7 @@ class MyAccountFragment : Fragment() {
         val updatedEmail = emailEditText.text.toString()
 
         // Call the ViewModel to simulate saving the user data
-        viewModel.updateUserProfile(updatedName, updatedEmail)
+//        viewModel.updateUserProfile(updatedName, updatedEmail)
 
         // After saving, show a Toast and navigate back to the ProfileFragment
         Toast.makeText(context, "Profile updated successfully", Toast.LENGTH_SHORT).show()

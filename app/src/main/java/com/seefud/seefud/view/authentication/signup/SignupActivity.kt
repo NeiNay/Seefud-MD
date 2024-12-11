@@ -84,7 +84,7 @@ class SignupActivity : AppCompatActivity() {
                 }
 
                 is Result.Error -> {
-                    showErrorDialog(result.error)
+                    showErrorDialog(result.message)
                 }
             }
         }

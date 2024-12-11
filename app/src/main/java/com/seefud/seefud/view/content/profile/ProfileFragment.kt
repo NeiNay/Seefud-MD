@@ -1,6 +1,8 @@
 package com.seefud.seefud.view.content.profile
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.qrcode.QRCodeWriter
 import com.seefud.seefud.R
 import com.seefud.seefud.databinding.FragmentProfileBinding
 import com.seefud.seefud.view.authentication.welcome.WelcomeActivity
@@ -35,8 +39,15 @@ class ProfileFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.getSession().observe(viewLifecycleOwner) { user ->
             if (user.isLogin) {
-                binding.userName.text = user.name
-                binding.loginSection.visibility = View.GONE
+                viewModel.getVendor().observe(viewLifecycleOwner) { vendor ->
+                    vendor?.let {
+                        binding.userName.text = it.store_name
+                        binding.txtVerified.visibility =
+                            if (it.is_verified) View.VISIBLE else View.GONE
+                        val qrCode = generateQRCode(it.id.toString())
+                        binding.qrCodeImage.setImageBitmap(qrCode)
+                    }
+                }
             } else {
                 with(binding) {
                     userName.text = getString(R.string.you_haven_t_logged_in_yet)
@@ -47,16 +58,35 @@ class ProfileFragment : Fragment() {
                     profileImage.visibility = View.GONE
                     txtVerified.visibility = View.GONE
                     dashboardSection.visibility = View.GONE
+                    qrCodeImage.visibility = View.GONE
                 }
 
             }
         }
     }
 
+    private fun generateQRCode(data: String): Bitmap {
+        val size = 512 // Adjust the size as needed
+        val qrCodeWriter = QRCodeWriter()
+        val bitMatrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, size, size)
+        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565)
+        for (x in 0 until size) {
+            for (y in 0 until size) {
+                bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
+            }
+        }
+        return bitmap
+    }
+
     private fun setupAction() {
         // MyAccount Section
         binding.myAccSection.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_profile_to_myAccountFragment)
+        }
+
+        // QR Detail Section
+        binding.qrCodeImage.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_qrDetailFragment)
         }
 
         // Login Section

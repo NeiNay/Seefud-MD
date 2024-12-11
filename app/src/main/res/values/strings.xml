@@ -153,4 +153,6 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="simpan_masakan_btn">Simpan</string>
     <string name="login_as_guest">Masuk sebagai Tamu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

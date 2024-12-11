@@ -6,13 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.seefud.seefud.R
-import com.seefud.seefud.data.pref.Vendor
+import com.seefud.seefud.data.response.VendorData
 import com.seefud.seefud.databinding.ItemVendorBinding
 import com.seefud.seefud.view.content.detail.DetailActivity
 
-class VendorAdapter : ListAdapter<Vendor, VendorAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class VendorAdapter : ListAdapter<VendorData, VendorAdapter.MyViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemVendorBinding.inflate(inflater, parent, false)
@@ -24,36 +22,30 @@ class VendorAdapter : ListAdapter<Vendor, VendorAdapter.MyViewHolder>(DIFF_CALLB
         holder.bind(vendorItem)
 
         holder.itemView.setOnClickListener { view ->
-            view.context.startActivity(
-                Intent(view.context, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.EXTRA_VENDOR, vendorItem.id)
-                }
-            )
+            view.context.startActivity(Intent(view.context, DetailActivity::class.java).apply {
+                putExtra(DetailActivity.EXTRA_VENDOR, vendorItem.id)
+            })
         }
     }
 
     class MyViewHolder(private val binding: ItemVendorBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(vendor: Vendor) {
+        fun bind(vendor: VendorData) {
             with(binding) {
-                tvVendorName.text = vendor.name
+                tvVendorName.text = vendor.storename
                 tvVendorDescription.text = vendor.description
-                Glide.with(itemView.context)
-                    .load(vendor.imageUrl)
-                    .placeholder(R.drawable.plate)
-                    .into(ivVendorImage)
             }
         }
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Vendor>() {
-            override fun areItemsTheSame(oldItem: Vendor, newItem: Vendor): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<VendorData>() {
+            override fun areItemsTheSame(oldItem: VendorData, newItem: VendorData): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: Vendor, newItem: Vendor
+                oldItem: VendorData, newItem: VendorData
             ): Boolean {
                 return oldItem == newItem
             }

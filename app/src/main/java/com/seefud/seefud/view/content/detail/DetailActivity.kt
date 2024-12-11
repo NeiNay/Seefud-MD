@@ -6,12 +6,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.seefud.seefud.R
-import com.seefud.seefud.data.pref.FoodItem
-import com.seefud.seefud.data.pref.Vendor
+import com.seefud.seefud.data.Result
+import com.seefud.seefud.data.response.ProductData
+import com.seefud.seefud.data.response.VendorData
 import com.seefud.seefud.databinding.ActivityDetailBinding
-import com.seefud.seefud.view.content.FoodAdapter
+import com.seefud.seefud.view.content.ProductAdapter
 import com.seefud.seefud.view.content.home.HomeViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -25,51 +25,69 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val scannedId = intent.getStringExtra("scannedId")
-        val vendorId = intent.getStringExtra(EXTRA_VENDOR)
+        val scannedId = intent.getStringExtra(EXTRA_SCAN)
+        val vendorId = intent.getIntExtra(EXTRA_VENDOR, -1)
 
-        val idToUse = scannedId ?: vendorId
+        val idToUse = scannedId?.toIntOrNull() ?: vendorId
 
-        idToUse?.let { id ->
-            viewModel.getVendorById(id)
-            viewModel.vendorById.observe(this) { vendor ->
-                vendor?.let {
-                    displayVendorDetails(it)
-                } ?: run {
-                    Toast.makeText(this, "Vendor not found", Toast.LENGTH_SHORT).show()
+        idToUse.let { id ->
+            // Observe the vendor details live data
+            viewModel.getVendorById(id).observe(this) { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        // Show loading indicator if needed
+                    }
+
+                    is Result.Success -> {
+                        result.data.let {
+                            displayVendorDetails(it)
+                            observeProducts(id)
+                        }
+                    }
+
+                    is Result.Error -> {
+                        Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
+    }
 
+    private fun observeProducts(vendorId: Int) {
+        // Observe products live data
+        viewModel.getProducts(vendorId).observe(this) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    // Show loading indicator if needed
+                }
+
+                is Result.Success -> {
+                    displayProducts(result.data)
+                }
+
+                is Result.Error -> {
+                    Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun displayVendorDetails(vendor: VendorData) {
+        binding.namarestoTxt.text = vendor.storename
+    }
+
+    private fun displayProducts(products: List<ProductData>) {
         val recyclerView: RecyclerView = findViewById(R.id.rv_makanan)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
 
-        // Sample data
-        val foodList = listOf(
-            FoodItem(
-                "Nasi Goreng", "Delicious fried rice with spices", ""
-            ),
-            FoodItem(
-                "Sate Ayam", "Grilled chicken skewers with peanut sauce", ""
-            ),
-            FoodItem(
-                "Rendang", "Spicy beef dish with coconut milk", ""
-            )
-        )
-
-        val foodAdapter = FoodAdapter(foodList)
+        val foodAdapter = ProductAdapter(products)
         recyclerView.adapter = foodAdapter
-    }
-
-    private fun displayVendorDetails(vendor: Vendor) {
-        binding.namarestoTxt.text = vendor.name
-        Glide.with(this).load(vendor.imageUrl).into(binding.ivResto)
-        Glide.with(this).load(vendor.profileImageUrl).into(binding.profileIv)
     }
 
     companion object {
         const val EXTRA_VENDOR = "extra_vendor"
+        const val EXTRA_SCAN = "scannedId"
     }
-
 }
+

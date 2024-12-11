@@ -69,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
                 is Result.Error -> {
                     showLoading(false)
-                    showErrorDialog(result.error)
+                    showErrorDialog(result.message)
                 }
             }
         }

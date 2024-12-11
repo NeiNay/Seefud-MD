@@ -19,15 +19,46 @@ data class LoginResult(
     @field:SerializedName("token") val token: String? = null
 )
 
-data class VendorResponse(
-    @SerializedName("status") val status: String,
-    @SerializedName("message") val message: String,
-    @SerializedName("data") val data: List<VendorData>
+data class AllVendorsResult(
+    @field:SerializedName("status") val status: String? = null,
+    @field:SerializedName("message") val message: String? = null,
+    @field:SerializedName("data") val listVendor: List<VendorData> = emptyList()
+)
+
+data class VendorDetailResult(
+    @field:SerializedName("status") val status: String? = null,
+    @field:SerializedName("message") val message: String? = null,
+    @field:SerializedName("data") val detailVendor: VendorData
 )
 
 data class VendorData(
-    @SerializedName("id") val id: Int,
-    @SerializedName("store_name") val store_name: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("location") val location: String
+    @field:SerializedName("id") val id: Int,
+    @field:SerializedName("store_name") val storename: String? = null,
+    @field:SerializedName("description") val description: String? = null,
+    @field:SerializedName("location") val location: String? = null,
+    @field:SerializedName("rating") val rating: Int = 0,
+    @field:SerializedName("is_verified") val isVerified: Boolean = false
 )
+
+data class ProductResponse(
+    @field:SerializedName("status") val status: String? = null,
+    @field:SerializedName("message") val message: String? = null,
+    @field:SerializedName("data") val listProduct: List<ProductData> = emptyList()
+)
+
+data class SingleProductResponse(
+    @field:SerializedName("status") val status: String? = null,
+    @field:SerializedName("message") val message: String? = null,
+    @field:SerializedName("data") val singleProduct: ProductData
+)
+
+data class ProductData(
+    @field:SerializedName("id") val id: Int,
+    @field:SerializedName("name") val name: String? = null,
+    @field:SerializedName("description") val description: String? = null,
+    @field:SerializedName("price") val price: Int,
+    @field:SerializedName("qr_code") val qrCode: String? = null
+)
+
+
+

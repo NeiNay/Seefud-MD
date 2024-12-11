@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.seefud.seefud.R
 import com.seefud.seefud.data.Result
+import com.seefud.seefud.data.response.VendorData
 import com.seefud.seefud.databinding.FragmentHomeBinding
 import com.seefud.seefud.view.content.VendorAdapter
 import com.seefud.seefud.view.content.ViewModelFactory
@@ -27,6 +28,8 @@ class HomeFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
 
+    private var vendorList: List<VendorData> = emptyList()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -38,9 +41,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupSearch()
         setupRecyclerView()
-        viewModel.fetchVendors()
 
-        viewModel.vendors.observe(viewLifecycleOwner) { result ->
+        viewModel.fetchVendors().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -48,16 +50,16 @@ class HomeFragment : Fragment() {
                 }
 
                 is Result.Success -> {
-                    binding.noDataText.visibility = View.GONE
+                    vendorList = result.data
                     vendorAdapter.submitList(result.data)
+                    searchAdapter.submitList(result.data)
+                    binding.noDataText.visibility = View.GONE
                 }
 
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.textView5.visibility = View.GONE
-                    binding.textView6.visibility = View.GONE
                     binding.noDataText.visibility = View.VISIBLE
-                    Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), result.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -88,7 +90,7 @@ class HomeFragment : Fragment() {
                     if (query.isNotEmpty()) {
                         filterVendors(query)
                     } else {
-                        searchAdapter.submitList(emptyList())
+                        searchAdapter.submitList(vendorList)
                     }
                 }
 
@@ -113,24 +115,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun filterVendors(query: String) {
-        val filteredList = when (val result = viewModel.vendors.value) {
-            is Result.Success -> {
-                result.data.filter {
-                    it.name?.contains(query, ignoreCase = true) == true || it.description?.contains(
-                        query,
-                        ignoreCase = true
-                    ) == true
-                }
-            }
-
-            else -> {
-                emptyList()
-            }
+        val filteredList = vendorList.filter {
+            it.storename?.contains(query, ignoreCase = true) == true || it.description?.contains(
+                query, ignoreCase = true
+            ) == true
         }
         searchAdapter.submitList(filteredList)
 
         if (filteredList.isEmpty()) {
-            Toast.makeText(requireContext(), "No item found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "No items found", Toast.LENGTH_SHORT).show()
         }
     }
 
