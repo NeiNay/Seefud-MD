@@ -96,7 +96,7 @@ class ProfileFragment : Fragment() {
 
         // Add item Section
         binding.addDataSection.setOnClickListener {
-            Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_navigation_profile_to_addDishFragment)
         }
 
         // Logout Section

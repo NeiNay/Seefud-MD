@@ -1,132 +1,149 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.content.profile.addDish.AddDishFragment">
+    tools:context=".view.content.profile.AddDishFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/tambah_hidangan"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Field: Nama Masakan -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/nama_masakan"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/dishNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/white_roundbg_shape"
+                android:hint="@string/hint_nama_masakan"
+                android:inputType="text"
+                android:padding="12dp"
+                tools:ignore="Autofill" />
+
+            <!-- Field: Gambar Masakan -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/gambar_masakan"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/dishImg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/white_roundbg_shape"
+                android:scaleType="centerCrop"
+                android:src="@drawable/plate"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:id="@+id/uploadImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/dark_green"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:text="@string/upload_gambar_btn"
+                android:textColor="@color/white" />
+
+            <!-- Field: Bahan -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/bahan"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/ingredientsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/white_roundbg_shape"
+                android:hint="@string/hint_bahan_masakan"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:padding="12dp"
+                tools:ignore="Autofill" />
+
+            <!-- Field: Deskripsi -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/deskripsi"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/descriptionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/white_roundbg_shape"
+                android:hint="@string/hint_deskripsi_masakan"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:padding="12dp"
+                tools:ignore="Autofill" />
+
+            <!-- Button Simpan -->
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/green"
+                android:padding="12dp"
+                android:text="@string/simpan_masakan_btn" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:elevation="4dp"
-        android:layout_gravity="center" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tambah Hidangan"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="16dp" />
-
-        <!-- Field: Nama Masakan -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/nama_masakan"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp" />
-
-        <EditText
-            android:id="@+id/dishNameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Masukkan nama masakan"
-            android:padding="12dp"
-            android:background="@drawable/white_roundbg_shape"
-            android:layout_marginTop="8dp" />
-
-        <!-- Field: Gambar Masakan -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gambar_masakan"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp" />
-
-        <ImageView
-            android:id="@+id/dishImg"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/plate"
-            android:contentDescription="Gambar Masakan"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/white_roundbg_shape" />
-
-        <Button
-            android:id="@+id/uploadImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/upload_gambar_btn"
-            android:layout_marginTop="12dp"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="8dp"
-            android:backgroundTint="@color/dark_green"
-            android:textColor="@color/white" />
-
-        <!-- Field: Bahan -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bahan"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp" />
-
-        <EditText
-            android:id="@+id/ingredientsEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Masukkan bahan masakan"
-            android:padding="12dp"
-            android:background="@drawable/white_roundbg_shape"
-            android:layout_marginTop="8dp"
-            android:inputType="textMultiLine"
-            android:minLines="3" />
-
-        <!-- Field: Deskripsi -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/deskripsi"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp" />
-
-        <EditText
-            android:id="@+id/descriptionEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Masukkan deskripsi masakan"
-            android:padding="12dp"
-            android:background="@drawable/white_roundbg_shape"
-            android:layout_marginTop="8dp"
-            android:inputType="textMultiLine"
-            android:minLines="5" />
-
-        <!-- Button Simpan -->
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/simpan_masakan_btn"
-            android:layout_marginTop="24dp"
-            android:padding="12dp"
-            android:backgroundTint="@color/green" />
-    </LinearLayout>
-</FrameLayout>
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

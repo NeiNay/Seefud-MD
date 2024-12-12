@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.seefud.seefud.R
@@ -59,6 +60,7 @@ class HomeFragment : Fragment() {
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
                     binding.noDataText.visibility = View.VISIBLE
+                    binding.textView6.visibility = View.GONE
                     Toast.makeText(requireContext(), result.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -101,14 +103,8 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         vendorAdapter = VendorAdapter()
-        binding.rvHalal.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = vendorAdapter
-            setHasFixedSize(true)
-        }
-
         binding.rvMitra.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = vendorAdapter
             setHasFixedSize(true)
         }

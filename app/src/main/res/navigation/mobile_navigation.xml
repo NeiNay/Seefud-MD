@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_navigation_profile_to_qrDetailFragment"
             app:destination="@id/qrDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_addDishFragment"
+            app:destination="@id/addDishFragment" />
     </fragment>
     <fragment
         android:id="@+id/myAccountFragment"
@@ -41,5 +44,10 @@
         android:name="com.seefud.seefud.view.content.profile.QrDetailFragment"
         android:label="fragment_qr_detail"
         tools:layout="@layout/fragment_qr_detail" />
+    <fragment
+        android:id="@+id/addDishFragment"
+        android:name="com.seefud.seefud.view.content.profile.AddDishFragment"
+        android:label="fragment_add_dish"
+        tools:layout="@layout/fragment_add_dish" />
 
 </navigation>

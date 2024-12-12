@@ -153,6 +153,10 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="simpan_masakan_btn">Simpan</string>
     <string name="login_as_guest">Masuk sebagai Tamu</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_granted">Izin diberikan</string>
+    <string name="permission_denied">Izin ditolak</string>
+    <string name="tambah_hidangan">Tambah Hidangan</string>
+    <string name="hint_nama_masakan">Masukkan nama masakan</string>
+    <string name="hint_bahan_masakan">Masukkan bahan masakan</string>
+    <string name="hint_deskripsi_masakan">Masukkan deskripsi masakan</string>
 </resources>
