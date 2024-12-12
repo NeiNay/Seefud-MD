@@ -1,5 +1,6 @@
 ## issues:
 
-blm bs login/register
+API masih ??? - 404 not found
+
 
 fitur lapor blm bikin
