@@ -29,7 +29,7 @@ Di bagian kanan atas, terdapat ikon profil yang menunjukkan avatar pengguna.
 - Mengajak pengguna untuk menjelajahi menu makanan yang ditawarkan. Kalimat "Scroll terus, ya!" bersifat persuasif dan mendorong interaksi pengguna.
 - Menampilkan gambar-gambar makanan yang dijual oleh restoran. Gambar-gambar ini berfungsi sebagai visualisasi menu dan menarik perhatian pengguna. Dalam contoh yang diberikan, gambar yang ditampilkan adalah placeholder, dan seharusnya diganti dengan gambar makanan yang sebenarnya.
 - Memberikan informasi penting tentang restoran, termasuk:
-- Memberikan informasi singkat tentang restoran. Dalam contoh ini, deskripsi hanya berupa placeholder ("blablabla"). Seharusnya diisi dengan deskripsi yang informatif dan menarik.
+- Memberikan informasi singkat tentang restoran. Dalam contoh ini, deskripsi hanya berupa placeholder
 Alamat: Menampilkan alamat lengkap restoran.
 Jam Operasional: Menunjukkan jam buka dan tutup restoran.
 Tombol "Hubungi": Memungkinkan pengguna untuk menghubungi restoran, misalnya melalui telepon atau pesan.
