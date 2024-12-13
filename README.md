@@ -1,5 +1,25 @@
 # Mobile Development - Seefud
 
+## Installation
+To install this application, you need to do the following:
+
+1. *Have a development environment*
+  You need the software and knowledge to build an Android application from its source code. This includes:
+- Android Studio: The official IDE (Integrated Development Environment) for Android development.
+- JDK (Java Development Kit): Software for running Java, required by Kotlin.
+- Android SDK (Software Development Kit): A collection of tools and libraries needed to build Android applications.
+- Programming knowledge: You need to understand the basics of Android programming and Kotlin.
+
+2. *Clone the repository*
+  Clone the GitHub repository to your computer using Git:
+  > git clone https://github.com/NeiNay/Seefud-MD.git
+
+3. *Open the project in Android Studio*
+  Open the cloned project in Android Studio. Android Studio will download the necessary dependencies and prepare the project for building.
+
+5. *Build and run the application*
+   Once the project is ready, you can build the application and run it on an Android emulator or a physical Android device connected to your computer. Specific instructions for building and running the application may be found within the GitHub repository.
+
 ## Deskripsi
 By enabling full transparency, Seefud strengthens consumer relationships and enhances brand credibility. Through market research, we identied the need for businesses to adapt to the rising demand for ethical sourcing and sustainability. Our solution helps build trust, boost market competitiveness, and ensure that businesses can meet evolving consumer expectations
 
