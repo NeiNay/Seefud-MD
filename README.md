@@ -4,7 +4,10 @@
 By enabling full transparency, Seefud strengthens consumer relationships and enhances brand credibility. Through market research, we identied the need for businesses to adapt to the rising demand for ethical sourcing and sustainability. Our solution helps build trust, boost market competitiveness, and ensure that businesses can meet evolving consumer expectations
 
 ---
-
+![alt text](https://github.com/NeiNay/Seefud-MD/blob/home/app/src/main/java/com/seefud/seefud/ui/welcome.xml.png)
+![alt text](https://github.com/NeiNay/Seefud-MD/blob/home/app/src/main/java/com/seefud/seefud/ui/login.xml.png)
+![alt text](https://github.com/NeiNay/Seefud-MD/blob/home/app/src/main/java/com/seefud/seefud/ui/register.xml.png)
+![alt text](https://github.com/NeiNay/Seefud-MD/blob/home/app/src/main/java/com/seefud/seefud/ui/detail_pg.xml.png)
 ## Fitur-fitur
 1. *Login And Register*:
 
