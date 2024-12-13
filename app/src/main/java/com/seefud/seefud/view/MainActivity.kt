@@ -30,6 +30,14 @@ class MainActivity : AppCompatActivity() {
                 navView.visibility = View.VISIBLE
             }
         }
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            if (destination.id == R.id.navigation_scan) {
+//                navView.visibility = View.GONE
+//            } else {
+//                navView.visibility = View.VISIBLE
+//            }
+//        }
+
     }
 
 }

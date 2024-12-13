@@ -3,7 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_scan">Scan</string>
     <string name="title_profile">Profile</string>
-
     <string name="signup">Daftar</string>
     <string name="login">Masuk</string>
     <string name="message_welcome_page">Capai kuliner Indonesia yang bersih dan terpercaya bersama kami. Daftarkan usaha kulinermu di Seefood dan dapatkan token terpercaya dari kami</string>
@@ -21,7 +20,6 @@
     <string name="err_pass">Password tidak boleh kurang dari 8 karakter</string>
     <string name="retry">Coba Lagi</string>
     <string name="success_register_msg">Akun berhasil dibuat. Yuk, ke login. Tunggu.. </string>
-
     <string name="button_error">Lengkapi data terlebih dahulu</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -160,4 +158,6 @@
     <string name="hint_bahan_masakan">Masukkan bahan masakan</string>
     <string name="hint_deskripsi_masakan">Masukkan deskripsi masakan</string>
     <string name="deskripsi_toko">Deskripsi Toko</string>
+    <string name="logo_desc">logo desc</string>
+    <string name="scan_qr_code">QR Code</string>
 </resources>
