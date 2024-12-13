@@ -3,7 +3,7 @@
 ## Installation
 To install this application, you need to do the following:
 
-1. *Have a development environment*:
+###1. *Have a development environment*:###
   You need the software and knowledge to build an Android application from its source code. This includes:
 - Android Studio: The official IDE (Integrated Development Environment) for Android development.
 - JDK (Java Development Kit): Software for running Java, required by Kotlin.
