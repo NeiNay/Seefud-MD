@@ -45,7 +45,3 @@ Seksi Umpan Balik: Memungkinkan pengguna untuk memberikan umpan balik atau melap
 
 ---
 
-## Catatan Tambahan
-- Pastikan model (.h5) disimpan di folder models/ sebelum menjalankan server.
-- Gunakan file kredensial key.json untuk mengakses layanan Google Cloud.
-- Selalu backup model sebelum memperbarui versi baru.
