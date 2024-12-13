@@ -5,43 +5,42 @@ By enabling full transparency, Seefud strengthens consumer relationships and enh
 
 ---
 ![alt text](https://github.com/NeiNay/Seefud-MD/blob/home/app/src/main/java/com/seefud/seefud/ui/img.png)
-## Fitur-fitur
+## Features
 1. *Login And Register*:
 
-- Menggunakan email dan password yang telah terdaftar.
-- Bila akun belum terdaftar maka membuat akun dengan memasukkan Username, Email, Password.
+- Uses registered email and password.
+- If the account is not yet registered, create an account by entering a Username, Email, and Password.
 
 2.*Dassboard*
 
-- Dashboard berisikan Menampilkan sapaan kepada pengguna, seperti "Halo, User".
-Di bagian kanan atas, terdapat ikon profil yang menunjukkan avatar pengguna.
-- Terdapat kolom pencarian dengan placeholder "Search", yang memungkinkan pengguna mencari informasi atau UMKM tertentu.
-- Bagian ini menampilkan UMKM yang sudah memiliki sertifikat halal MUI.Setiap item terdiri dari gambar produk dan nama UMKM di bawahnya. Gambar terlihat berwarna pastel, mungkin merupakan produk yang dijual oleh UMKM tersebut.
-- Bagian ini menampilkan mitra UMKM yang mungkin bekerja sama dengan platform.Terdapat gambar produk serupa dengan bagian sebelumnya dan nama UMKM.
+- The dashboard greets the user, such as "Hello, User". A profile icon with the user's avatar is located in the upper right corner.
+- A search bar with the placeholder "Search" allows users to find specific information or UMKM (Micro, Small, and Medium Enterprises).
+- This section displays UMKM that have received MUI halal certification. Each item consists of a product image and the UMKM name below it. The images appear in pastel colors, possibly representing products sold by the UMKM.
+- This section displays partner UMKM that may be collaborating with the platform. It features product images similar to the previous section and the UMKM name.
   
 3. *Scanning*:
 
-- Fitur untuk scanning barcode yang tervrifikasi oleh Seefud
+- A feature for scanning barcodes verified by Seefud.
 
-3. *Deatails Product*:
+4. *Deatails Product*:
 
-- JMenampilkan nama restoran secara jelas dan menonjol di bagian atas. Ini adalah elemen penting untuk identifikasi dan branding.
-- Mengajak pengguna untuk menjelajahi menu makanan yang ditawarkan. Kalimat "Scroll terus, ya!" bersifat persuasif dan mendorong interaksi pengguna.
-- Menampilkan gambar-gambar makanan yang dijual oleh restoran. Gambar-gambar ini berfungsi sebagai visualisasi menu dan menarik perhatian pengguna. Dalam contoh yang diberikan, gambar yang ditampilkan adalah placeholder, dan seharusnya diganti dengan gambar makanan yang sebenarnya.
-- Memberikan informasi penting tentang restoran, termasuk:
-- Memberikan informasi singkat tentang restoran. Dalam contoh ini, deskripsi hanya berupa placeholder
-Alamat: Menampilkan alamat lengkap restoran.
-Jam Operasional: Menunjukkan jam buka dan tutup restoran.
-Tombol "Hubungi": Memungkinkan pengguna untuk menghubungi restoran, misalnya melalui telepon atau pesan.
-Seksi Umpan Balik: Memungkinkan pengguna untuk memberikan umpan balik atau melaporkan masalah yang mereka temui. Terdapat tombol "Laporkan" untuk memudahkan proses pelaporan.
-- Ikon berbagi memungkinkan pengguna untuk berbagi informasi tentang restoran dengan orang lain melalui media sosial atau aplikasi perpesanan.
+- Clearly displays the restaurant name prominently at the top. This is a crucial element for identification and branding.
+- Invites users to explore the food menu offered. The phrase "Scroll down, ya!" is persuasive and encourages user interaction.
+- Displays images of the food sold by the restaurant. These images serve as a visual representation of the menu and attract user attention. In the example provided, the images shown are placeholders and should be replaced with actual food images.
+- Provides essential information about the restaurant, including:
+A brief description of the restaurant. In this example, the description is just a placeholder.
+Address: Displays the complete restaurant address.
+Operating Hours: Shows the restaurant's opening and closing times.
+"Contact" Button: Allows users to contact the restaurant, for example, via phone or message.
+Feedback Section: Enables users to provide feedback or report problems encountered. A "Report" button facilitates the reporting process.
+- A share icon allows users to share information about the restaurant with others through social media or messaging applications.
 
-4. *Profile*:
+5. *Profile*:
 
-- Menampilkan nama akun UMKM ("UMKM Name") dan status verifikasi ("Verified" dengan ikon centang hijau). Ini memberikan informasi langsung kepada pengguna tentang identitas dan status akun mereka. Avatar pengguna berupa gambar kartun perempuan juga ditampilkan.
-- Memungkinkan pengguna untuk mengelola informasi akun mereka. Ikon pengguna dan teks "Make changes to your account" menunjukkan fungsi utama dari seksi ini. Ikon peringatan (!) mungkin menunjukkan adanya informasi penting atau peringatan yang perlu diperhatikan pengguna. Panah kanan (" > ") menunjukkan bahwa seksi ini akan mengarahkan pengguna ke halaman lain setelah diklik. Dan menampilkan email dan password pengguna
-- Memungkinkan pengguna untuk keluar dari akun mereka. Teks tambahan "Further secure your account for safety" menekankan aspek keamanan dari proses logout. Panah kanan (" > ") menunjukkan bahwa proses logout mungkin melibatkan langkah-langkah tambahan atau konfirmasi.
-- Memberikan opsi bagi pengguna untuk menghapus akun mereka secara permanen. Teks "Goodbye :( ?" merupakan pesan konfirmasi yang emosional untuk mengingatkan pengguna akan konsekuensi dari menghapus akun. Panah kanan (" > ") menunjukkan bahwa proses penghapusan akun mungkin melibatkan langkah-langkah tambahan atau konfirmasi.
+- Displays the UMKM account name ("UMKM Name") and verification status ("Verified" with a green checkmark icon). This provides users with immediate information about their account identity and status. A cartoon female avatar is also displayed.
+- Allows users to manage their account information. The user icon and the text "Make changes to your account" indicate the main function of this section. A warning icon (!) may indicate important information or warnings that the user needs to pay attention to. The right arrow (" > ") indicates that this section will redirect the user to another page after being clicked. It also displays the user's email and password.
+- Allows users to log out of their account. The additional text "Further secure your account for safety" emphasizes the security aspect of the logout process. The right arrow (" > ") indicates that the logout process may involve additional steps or confirmation.
+- Provides an option for users to permanently delete their account. The text "Goodbye :( ?" is an emotional confirmation message to remind users of the consequences of deleting their account. The right arrow (" > ") indicates that the account deletion process may involve additional steps or confirmation.
 
 ---
 
