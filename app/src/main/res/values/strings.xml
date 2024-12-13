@@ -159,4 +159,5 @@
     <string name="hint_nama_masakan">Masukkan nama masakan</string>
     <string name="hint_bahan_masakan">Masukkan bahan masakan</string>
     <string name="hint_deskripsi_masakan">Masukkan deskripsi masakan</string>
+    <string name="deskripsi_toko">Deskripsi Toko</string>
 </resources>

@@ -23,7 +23,8 @@ class VendorAdapter : ListAdapter<VendorData, VendorAdapter.MyViewHolder>(DIFF_C
 
         holder.itemView.setOnClickListener { view ->
             view.context.startActivity(Intent(view.context, DetailActivity::class.java).apply {
-                putExtra(DetailActivity.EXTRA_VENDOR, vendorItem.id)
+                putExtra(DetailActivity.EXTRA_VENDOR_ID, vendorItem.id)
+                putExtra(DetailActivity.EXTRA_VENDOR_NAME, vendorItem.storename)
             })
         }
     }

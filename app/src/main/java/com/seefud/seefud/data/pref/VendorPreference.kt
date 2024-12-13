@@ -38,12 +38,6 @@ class VendorPreference private constructor(private val dataStore: DataStore<Pref
         }
     }
 
-    suspend fun clearVendor() {
-        dataStore.edit { preferences ->
-            preferences.clear()
-        }
-    }
-
     companion object {
         @Volatile
         private var INSTANCE: VendorPreference? = null

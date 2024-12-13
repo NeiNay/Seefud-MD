@@ -15,7 +15,7 @@ class QrDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentQrDetailBinding.inflate(inflater, container, false)
 
         // Get QR code bitmap passed as an argument

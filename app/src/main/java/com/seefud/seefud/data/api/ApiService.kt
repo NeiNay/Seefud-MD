@@ -1,39 +1,59 @@
 package com.seefud.seefud.data.api
 
 import com.seefud.seefud.data.response.AllVendorsResult
+import com.seefud.seefud.data.response.LoginRequest
 import com.seefud.seefud.data.response.LoginResponse
 import com.seefud.seefud.data.response.ProductData
 import com.seefud.seefud.data.response.ProductResponse
+import com.seefud.seefud.data.response.RegisterRequest
 import com.seefud.seefud.data.response.RegisterResponse
+import com.seefud.seefud.data.response.VendorData
 import com.seefud.seefud.data.response.VendorDetailResult
 import okhttp3.MultipartBody
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
+import okhttp3.RequestBody
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json")
     @POST("auth/register")
     suspend fun register(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("role") role: String = "vendor"
+        @Body requestBody: RegisterRequest
     ): RegisterResponse
 
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json")
     @POST("auth/login")
-    suspend fun login(
-        @Field("email") email: String, @Field("password") password: String
-    ): LoginResponse
+    suspend fun login(@Body body: LoginRequest): LoginResponse
 
     @GET("/vendor")
     suspend fun getAllVendors(): AllVendorsResult
+
+    @Multipart
+    @POST("/vendor")
+    suspend fun createVendor(
+        @Header("Authorization") authHeader: String,
+        @Part("store_name") storeName: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("location") location: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): VendorData
+
+    @Multipart
+    @PUT("/vendor/{id}")
+    suspend fun updateVendor(
+        @Path("id") vendorId: Int,
+        @Part("store_name") storeName: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("location") location: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): VendorData
 
     @GET("/vendor/{vendorId}")
     suspend fun getVendorById(
@@ -48,7 +68,6 @@ interface ApiService {
     @Multipart
     @POST("/products")
     suspend fun createProduct(
-        @Header("Authorization") authHeader: String,
-        @Part body: MultipartBody
+        @Header("Authorization") authHeader: String, @Part body: MultipartBody
     ): ProductData
 }

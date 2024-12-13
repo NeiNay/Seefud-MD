@@ -25,6 +25,7 @@ class ProfileFragment : Fragment() {
     }
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private var qrCodeBitmap: Bitmap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -41,11 +42,11 @@ class ProfileFragment : Fragment() {
             if (user.isLogin) {
                 viewModel.getVendor().observe(viewLifecycleOwner) { vendor ->
                     vendor?.let {
-                        binding.userName.text = it.store_name
+                        binding.loginSection.visibility = View.GONE
+                        binding.userName.text = user.name
                         binding.txtVerified.visibility =
                             if (it.is_verified) View.VISIBLE else View.GONE
-                        val qrCode = generateQRCode(it.id.toString())
-                        binding.qrCodeImage.setImageBitmap(qrCode)
+                        qrCodeBitmap = generateQRCode(it.id.toString())
                     }
                 }
             } else {
@@ -57,7 +58,6 @@ class ProfileFragment : Fragment() {
                     addDataSection.visibility = View.GONE
                     profileImage.visibility = View.GONE
                     txtVerified.visibility = View.GONE
-                    dashboardSection.visibility = View.GONE
                     qrCodeImage.visibility = View.GONE
                 }
 
@@ -66,7 +66,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun generateQRCode(data: String): Bitmap {
-        val size = 512 // Adjust the size as needed
+        val size = 512
         val qrCodeWriter = QRCodeWriter()
         val bitMatrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, size, size)
         val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565)
@@ -86,7 +86,15 @@ class ProfileFragment : Fragment() {
 
         // QR Detail Section
         binding.qrCodeImage.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_profile_to_qrDetailFragment)
+            qrCodeBitmap?.let { qrCode ->
+                val bundle = Bundle().apply {
+                    putParcelable("qr_code_bitmap", qrCode)
+                }
+                findNavController().navigate(
+                    R.id.action_navigation_profile_to_qrDetailFragment,
+                    bundle
+                )
+            }
         }
 
         // Login Section

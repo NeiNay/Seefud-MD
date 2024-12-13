@@ -9,10 +9,11 @@ import com.seefud.seefud.data.pref.UserPreference
 import com.seefud.seefud.data.pref.VendorModel
 import com.seefud.seefud.data.pref.VendorPreference
 import com.seefud.seefud.data.response.AllVendorsResult
-import com.seefud.seefud.data.response.LoginResponse
+import com.seefud.seefud.data.response.LoginRequest
 import com.seefud.seefud.data.response.LoginResult
 import com.seefud.seefud.data.response.ProductData
 import com.seefud.seefud.data.response.ProductResponse
+import com.seefud.seefud.data.response.RegisterRequest
 import com.seefud.seefud.data.response.RegisterResponse
 import com.seefud.seefud.data.response.VendorData
 import com.seefud.seefud.data.response.VendorDetailResult
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.Flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.HttpException
 import java.io.File
 
@@ -33,8 +35,18 @@ class UserRepository private constructor(
         userPreference.saveSession(user)
     }
 
-    suspend fun saveVendor(vendor: VendorModel) {
+    suspend fun updateVendor(
+        vendor: VendorModel, image: MultipartBody.Part? = null // Optional image for update
+    ): VendorData {
         vendorPreference.saveVendor(vendor)
+
+        val storeName = vendor.store_name.toRequestBody("text/plain".toMediaTypeOrNull())
+        val description = vendor.description.toRequestBody("text/plain".toMediaTypeOrNull())
+        val location = vendor.location.toRequestBody("text/plain".toMediaTypeOrNull())
+
+        return apiService.updateVendor(
+            vendor.id, storeName, description, location, image
+        )
     }
 
     suspend fun logout() {
@@ -53,29 +65,32 @@ class UserRepository private constructor(
         liveData {
             emit(Result.Loading)
             try {
-                val message = apiService.register(name, email, password).message
-                emit(Result.Success(message))
+                val requestBody = RegisterRequest(name, email, password)
+                val response = apiService.register(requestBody)
+                val registerResult = response.message
+                emit(Result.Success(registerResult!!))
             } catch (e: HttpException) {
-                val jsonInString = e.response()?.errorBody()?.string()
-                val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
-                val errorMessage = errorBody.message
-                emit(Result.Error(errorMessage!!))
+                val errorBody = e.response()?.errorBody()?.string()
+                val errorMessage = Gson().fromJson(errorBody, RegisterResponse::class.java).message
+                emit(Result.Error(errorMessage ?: "Unknown error"))
+            } catch (e: Exception) {
+                emit(Result.Error("Unexpected error: ${e.message}"))
             }
         }
 
     fun login(email: String, password: String): LiveData<Result<LoginResult>> = liveData {
         emit(Result.Loading)
         try {
-            val result = apiService.login(email, password).data
-            val id = result?.userId
-            val token = result?.token
-            emit(Result.Success(LoginResult(id, token)))
+            val requestBody = LoginRequest(email, password)
+            val response = apiService.login(requestBody)
+            val loginResult = response.data
+
+            emit(Result.Success(loginResult!!))
         } catch (e: HttpException) {
-            val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
-            val errorMessage =
-                errorBody.message ?: "Default error message\nAn unexpected error occurred"
-            emit(Result.Error(errorMessage))
+            val errorBody = e.response()?.errorBody()?.string() ?: "No error body"
+            emit(Result.Error("Error ${e.code()}: $errorBody"))
+        } catch (e: Exception) {
+            emit(Result.Error("Unexpected error: ${e.message}"))
         }
     }
 
@@ -87,9 +102,16 @@ class UserRepository private constructor(
             emit(Result.Success(vendors))
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, AllVendorsResult::class.java)
-            val errorMessage = errorBody.message ?: "An unexpected error occurred"
+            val errorBody = try {
+                Gson().fromJson(jsonInString, AllVendorsResult::class.java)
+            } catch (e: Exception) {
+                null
+            }
+            val errorMessage =
+                errorBody?.message ?: "An unexpected error occurred (HTTP ${e.code()})"
             emit(Result.Error(errorMessage))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message ?: "An unexpected error occurred"))
         }
     }
 
@@ -140,8 +162,6 @@ class UserRepository private constructor(
         }
 
         val requestBodyPart = requestBody.build()
-
-        // Make the POST request with the Authorization header
         return apiService.createProduct("Bearer $token", requestBodyPart)
     }
 

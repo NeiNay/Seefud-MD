@@ -4,18 +4,45 @@ import com.google.gson.annotations.SerializedName
 
 data class RegisterResponse(
     @field:SerializedName("status") val status: String? = null,
-    @field:SerializedName("message") val message: String? = null
+    @field:SerializedName("message") val message: String? = null,
+    @field:SerializedName("data") val data: RegisterData? = null
+)
+
+data class RegisterData(
+    @field:SerializedName("user") val user: User? = null,
+    @field:SerializedName("token") val token: String? = null
+)
+
+data class User(
+    @field:SerializedName("id") val id: Int,
+    @field:SerializedName("name") val name: String,
+    @field:SerializedName("email") val email: String,
+    @field:SerializedName("role") val role: String
+)
+
+data class RegisterRequest(
+    @field:SerializedName("name") val name: String,
+    @field:SerializedName("email") val email: String,
+    @field:SerializedName("password") val password: String,
+    @field:SerializedName("role") val role: String = "vendor"
+)
+
+data class LoginRequest(
+    @SerializedName("email") val email: String,
+    @SerializedName("password") val password: String
 )
 
 data class LoginResponse(
-    @field:SerializedName("loginResult") val data: LoginResult? = null,
+    @field:SerializedName("data") val data: LoginResult? = null,
     @field:SerializedName("status") val status: String? = null,
     @field:SerializedName("message") val message: String? = null
 )
 
 data class LoginResult(
+    @field:SerializedName("id") val id: Int? = null,
     @field:SerializedName("name") val name: String? = null,
-    @field:SerializedName("userId") val userId: String? = null,
+    @field:SerializedName("email") val email: String? = null,
+    @field:SerializedName("role") val role: String? = "vendor",
     @field:SerializedName("token") val token: String? = null
 )
 
@@ -44,12 +71,6 @@ data class ProductResponse(
     @field:SerializedName("status") val status: String? = null,
     @field:SerializedName("message") val message: String? = null,
     @field:SerializedName("data") val listProduct: List<ProductData> = emptyList()
-)
-
-data class SingleProductResponse(
-    @field:SerializedName("status") val status: String? = null,
-    @field:SerializedName("message") val message: String? = null,
-    @field:SerializedName("data") val singleProduct: ProductData
 )
 
 data class ProductData(

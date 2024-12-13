@@ -26,7 +26,8 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val scannedId = intent.getStringExtra(EXTRA_SCAN)
-        val vendorId = intent.getIntExtra(EXTRA_VENDOR, -1)
+        val vendorId = intent.getIntExtra(EXTRA_VENDOR_ID, -1)
+        val vendorName = intent.getStringExtra(EXTRA_VENDOR_NAME) ?: "Unknown"
 
         val idToUse = scannedId?.toIntOrNull() ?: vendorId
 
@@ -86,8 +87,9 @@ class DetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_VENDOR = "extra_vendor"
+        const val EXTRA_VENDOR_ID = "extra_vendor_id"
         const val EXTRA_SCAN = "scannedId"
+        const val EXTRA_VENDOR_NAME = "extra_vendor_name"
     }
 }
 

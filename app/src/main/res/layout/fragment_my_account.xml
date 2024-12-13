@@ -1,71 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical">
-
-    <!-- Profile Information -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:gravity="center"
-        android:text="@string/profile_title_page"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <!-- Name Input -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/name"
-        android:textColor="#000"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/white_roundbg_shape"
-        android:enabled="false"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:padding="12dp"
-        android:importantForAccessibility="no"
-        android:textSize="16sp" />
-
-    <!-- Email Input -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/email"
-        android:textColor="#000"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/emailEditText"
-        android:enabled="false"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/white_roundbg_shape"
-        android:hint="@string/email_hint"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
-        android:textSize="16sp" />
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="bottom">
+        android:orientation="vertical">
 
+        <!-- Profile Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:text="@string/profile_title_page"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Name Input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/name"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/white_roundbg_shape"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Email Input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/email"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/white_roundbg_shape"
+            android:enabled="false"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Description Input -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/deskripsi_toko"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/white_roundbg_shape"
+            android:enabled="false"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Edit Profile Section -->
         <TextView
             android:id="@+id/page_desc"
             android:layout_width="match_parent"
@@ -76,14 +91,12 @@
             android:textColor="#8A8A8A"
             android:textSize="14sp" />
 
-        <!-- Edit Profile Button -->
         <Button
             android:id="@+id/editProfileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/dark_green"
             android:padding="16dp"
             android:text="@string/edit_profile" />
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

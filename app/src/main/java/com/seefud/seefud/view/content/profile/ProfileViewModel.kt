@@ -16,21 +16,24 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
-    var currentImageUri: Uri? = null
+    fun getSession(): LiveData<UserModel> = repository.getSession().asLiveData()
+    fun getVendor(): LiveData<VendorModel> = repository.getVendor().asLiveData()
 
+    var currentImageUri: Uri? = null
     private val _createProductResponse = MutableLiveData<Result<ProductData>>()
+
     val createProductResponse: LiveData<Result<ProductData>> = _createProductResponse
 
     fun uploadDish(name: String, description: String, imageFile: File?) {
         viewModelScope.launch {
             _createProductResponse.value = Result.Loading
             try {
-                val userSession = repository.getSession().firstOrNull()
-                    ?: throw Exception("User not logged in")
+                val userSession =
+                    repository.getSession().firstOrNull() ?: throw Exception("User not logged in")
                 val token = userSession.token
 
                 val price = 0
-                val qrCode = "qr_code_example"
+                val qrCode = ""
 
                 val result =
                     repository.createProduct(token, name, description, price, qrCode, imageFile)
@@ -42,15 +45,11 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
-    fun getSession(): LiveData<UserModel> = repository.getSession().asLiveData()
-
-    fun getVendor(): LiveData<VendorModel> = repository.getVendor().asLiveData()
-
-//    fun updateUserProfile(name: String, email: String) {
-//        viewModelScope.launch {
-//            repository.updateUserProfile(name, email)
-//        }
-//    }
+    fun updateVendor(vendor: VendorModel) {
+        viewModelScope.launch {
+            repository.updateVendor(vendor, null)
+        }
+    }
 
     fun logout() {
         viewModelScope.launch {
